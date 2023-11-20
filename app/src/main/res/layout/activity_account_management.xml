@@ -6,57 +6,11 @@
     android:background="@color/blue_main"
     android:orientation="vertical">
 
-    <LinearLayout
+    <fragment
+        android:id="@+id/headerFragment"
+        android:name="com.example.booking.HeaderFragment"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:background="@color/white"
-        android:gravity="fill_horizontal"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/logoHeader"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="the logo"
-            app:srcCompat="@drawable/logo" />
-
-        <LinearLayout
-            android:layout_width="219dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="169dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:gravity="center_horizontal"
-                android:text="@string/search"
-                android:textAlignment="center"
-                android:textColor="@color/blue_main"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:gravity="end"
-                android:text="@string/profile"
-                android:textAlignment="gravity"
-                android:textColor="@color/blue_main"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-    </LinearLayout>
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -189,44 +143,6 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/white"
-        android:gravity="fill_horizontal"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="219dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/logoFooter"
-                android:layout_width="89dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/logo" />
-
-            <Space
-                android:layout_width="169dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/copyrightNotice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/copyright_notice"
-                android:textColor="@color/blue_main" />
-
-        </LinearLayout>
-
     </LinearLayout>
 
 </LinearLayout>
