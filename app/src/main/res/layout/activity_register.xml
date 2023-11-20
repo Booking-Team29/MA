@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#03A9F4"
+    tools:context=".RegisterActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="120dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="460dp">
+
+            <Button
+                android:id="@+id/loginButton2"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#2196F3"
+                android:padding="6dp"
+                android:text="Register"
+                android:textColor="#FDFDFD"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phoneText" />
+
+            <EditText
+                android:id="@+id/phoneText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:background="#D5D5D5"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="3dp"
+                android:text="Phone"
+                android:textColor="#FEFEFE"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cityText" />
+
+            <EditText
+                android:id="@+id/zipText"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="15dp"
+                android:background="#D7D7D7"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="3dp"
+                android:text="ZIP"
+                android:textColor="#FEFEFE"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/cityText"
+                app:layout_constraintTop_toBottomOf="@+id/addressText" />
+
+            <EditText
+                android:id="@+id/cityText"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:background="#D8D8D8"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="3dp"
+                android:text="City"
+                android:textColor="#FEFEFE"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressText" />
+
+            <EditText
+                android:id="@+id/addressText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:background="#D6D6D6"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="3dp"
+                android:text="Address"
+                android:textColor="#FEFEFE"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+
+            <EditText
+                android:id="@+id/passwordText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:background="#D6D6D6"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="3dp"
+                android:text="Password"
+                android:textColor="#FEFEFE"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/usernameTextRegister" />
+
+            <EditText
+                android:id="@+id/usernameTextRegister"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:background="#D6D6D6"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="3dp"
+                android:text="Username"
+                android:textColor="#FEFEFE"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/firstNameText" />
+
+            <EditText
+                android:id="@+id/lastNameText"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:background="#D7D7D7"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="3dp"
+                android:text="Last name"
+                android:textColor="#FEFEFE"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/firstNameText"
+                app:layout_constraintTop_toBottomOf="@+id/registerText" />
+
+            <TextView
+                android:id="@+id/registerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Register"
+                android:textColor="#03A9F4"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/firstNameText"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:background="#D8D8D8"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="3dp"
+                android:text="First name"
+                android:textColor="#FEFEFE"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerText" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="Already have an account ?" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="Sign In"
+                    android:textColor="#2195F2"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
