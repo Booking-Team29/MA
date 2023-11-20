@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booking.databinding.ActivityMainSearchBinding
 import com.example.booking.databinding.FragmentSearchResultBinding
 
-class MainSearch : ComponentActivity() {
+class MainSearch : AppCompatActivity() {
     private lateinit var listView: ListView
     private lateinit var adapter: ArrayAdapter<SearchResult>
     private lateinit var binding: ActivityMainSearchBinding

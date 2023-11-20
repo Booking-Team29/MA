@@ -11,7 +11,7 @@ import android.widget.BaseAdapter
 import androidx.activity.ComponentActivity
 import com.example.booking.databinding.ActivityAccommodationBinding
 
-class AccommodationActivity : ComponentActivity() {
+class AccommodationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAccommodationBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

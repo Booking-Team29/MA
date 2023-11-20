@@ -3,9 +3,10 @@ package com.example.booking
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.booking.databinding.ActivityAccountManagementBinding
 
-class AccountManagementActivity : ComponentActivity() {
+class AccountManagementActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAccountManagementBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

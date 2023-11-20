@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainSearch">
 
+    <fragment
+        android:id="@+id/headerFragment"
+        android:name="com.example.booking.HeaderFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <EditText
         android:id="@+id/placeInput"
         android:layout_width="209dp"

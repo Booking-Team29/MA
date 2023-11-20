@@ -2,13 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue_main"
+    android:gravity="center|top"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center">
+    android:padding="0dp">
+
+    <fragment
+        android:id="@+id/headerFragment"
+        android:name="com.example.booking.HeaderFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/startAccountActivityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Manage Account" />
+        android:text="lorem ipsum" />
+
+
 </LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_profile"
+        android:title="profile"
+    />
+
+    <item
+        android:id="@+id/nav_search"
+        android:title="search"
+    />
+
+    <item
+        android:id="@+id/nav_login"
+        android:title="login"
+        />
+
+    <item
+        android:id="@+id/nav_register"
+        android:title="register"
+        />
+</menu>
