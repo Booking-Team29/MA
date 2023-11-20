@@ -12,8 +12,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.startAccountActivityButton.setOnClickListener {
+        binding.accountButtonHome.setOnClickListener {
             val intent = Intent(this, AccountManagementActivity::class.java)
+            startActivity(intent)
+        }
+        binding.searchButtonHome.setOnClickListener {
+            val intent = Intent(this, MainSearch::class.java)
+            startActivity(intent)
+        }
+        binding.registerButtonHome.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+        binding.loginButtonHome.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }

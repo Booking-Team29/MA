@@ -2,21 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_profile"
-        android:title="profile"
-    />
+        android:title="Profile" />
 
     <item
         android:id="@+id/nav_search"
-        android:title="search"
-    />
+        android:title="Search" />
 
     <item
         android:id="@+id/nav_login"
-        android:title="login"
-        />
+        android:title="Login" />
 
     <item
         android:id="@+id/nav_register"
-        android:title="register"
-        />
+        android:title="Register" />
+    <item
+        android:id="@+id/nav_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Home" />
 </menu>
