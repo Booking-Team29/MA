@@ -78,6 +78,11 @@ class HeaderFragment : Fragment() {
                 startActivity(intent)
                 true
             }
+            R.id.nav_home -> {
+                val intent = Intent(context, MainActivity::class.java)
+                startActivity(intent)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
