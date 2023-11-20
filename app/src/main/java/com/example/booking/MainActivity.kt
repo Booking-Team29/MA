@@ -10,5 +10,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.startAccountActivityButton.setOnClickListener {
+            val intent = Intent(this, AccountManagementActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">Booking</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="home_address">Address</string>
+    <string name="city">City</string>
+    <string name="zip_code">ZIP</string>
+    <string name="phone">Phone</string>
+    <string name="search">Search</string>
+    <string name="profile">Profile</string>
+    <string name="copyright_notice">© 2023 Booking</string>
+    <string name="confirm">Confirm</string>
+    <string name="delete_account">Delete Account</string>
 </resources>
