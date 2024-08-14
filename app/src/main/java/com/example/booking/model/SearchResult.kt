@@ -1,3 +1,3 @@
-package com.example.booking
+package com.example.booking.model
 
 data class SearchResult(val description: String)

@@ -1,14 +1,13 @@
-package com.example.booking
+package com.example.booking.activity
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import androidx.activity.ComponentActivity
+import com.example.booking.R
 import com.example.booking.databinding.ActivityAccommodationBinding
 
 class AccommodationActivity : AppCompatActivity() {
@@ -39,7 +38,7 @@ class AccommodationActivity : AppCompatActivity() {
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val layoutInflater = LayoutInflater.from(ctx)
-            val rowMain = layoutInflater.inflate(com.example.booking.R.layout.fragment_review, parent, false)
+            val rowMain = layoutInflater.inflate(R.layout.fragment_review, parent, false)
             return rowMain
         }
 

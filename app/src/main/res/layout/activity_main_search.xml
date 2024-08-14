@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainSearch">
+    tools:context=".activity.MainSearch">
 
     <fragment
         android:id="@+id/headerFragment"
-        android:name="com.example.booking.HeaderFragment"
+        android:name="com.example.booking.fragment.HeaderFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="159dp"

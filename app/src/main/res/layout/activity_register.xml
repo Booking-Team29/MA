@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#03A9F4"
-    tools:context=".RegisterActivity">
+    tools:context=".activity.RegisterActivity">
 
     <fragment
         android:id="@+id/headerFragment"
-        android:name="com.example.booking.HeaderFragment"
+        android:name="com.example.booking.fragment.HeaderFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

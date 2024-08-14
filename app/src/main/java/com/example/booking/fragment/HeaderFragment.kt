@@ -1,4 +1,4 @@
-package com.example.booking
+package com.example.booking.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,14 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.example.booking.R
+import com.example.booking.activity.AccountManagementActivity
+import com.example.booking.activity.LoginActivity
+import com.example.booking.activity.MainActivity
+import com.example.booking.activity.MainSearch
+import com.example.booking.activity.RegisterActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
