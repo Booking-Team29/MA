@@ -1,8 +1,7 @@
-package com.example.booking
+package com.example.booking.activity
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import com.example.booking.databinding.ActivityAccountManagementBinding
 

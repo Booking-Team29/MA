@@ -15,7 +15,7 @@
 
         <fragment
             android:id="@+id/headerFragment"
-            android:name="com.example.booking.HeaderFragment"
+            android:name="com.example.booking.fragment.HeaderFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
