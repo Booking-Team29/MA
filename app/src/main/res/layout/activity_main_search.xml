@@ -32,19 +32,6 @@
         app:layout_constraintTop_toBottomOf="@+id/headerFragment" />
 
     <EditText
-        android:id="@+id/placeInput2"
-        android:layout_width="209dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="Room type"
-        android:inputType="text"
-        android:textColorHint="#007BFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/placeInput" />
-
-    <EditText
         android:id="@+id/numberOfPeopleInput"
         android:layout_width="129dp"
         android:layout_height="55dp"
@@ -64,27 +51,69 @@
         android:id="@+id/goButton"
         android:layout_width="92dp"
         android:layout_height="54dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="#007BFF"
-        android:text="Go"
+        android:text="Search"
+        app:layout_constraintBottom_toTopOf="@+id/resutlList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/placeInput2"
-        app:layout_constraintTop_toBottomOf="@+id/numberOfPeopleInput" />
+        app:layout_constraintStart_toEndOf="@+id/filterButton"
+        app:layout_constraintTop_toBottomOf="@+id/checkOutDate" />
 
     <ListView
         android:id="@+id/resutlList"
-        android:layout_width="398dp"
-        android:layout_height="616dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="7dp"
+        android:layout_width="355dp"
+        android:layout_height="502dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/placeInput2"
+        app:layout_constraintTop_toBottomOf="@+id/goButton"
         tools:listitem="@layout/fragment_search_result" />
+
+    <EditText
+        android:id="@+id/checkInDate"
+        android:layout_width="160dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="42dp"
+        android:ems="10"
+        android:hint="Check In Date"
+        android:inputType="date"
+        app:layout_constraintEnd_toStartOf="@+id/checkOutDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/placeInput" />
+
+    <EditText
+        android:id="@+id/checkOutDate"
+        android:layout_width="162dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Check Out Date"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkInDate"
+        app:layout_constraintTop_toBottomOf="@+id/placeInput" />
+
+    <Button
+        android:id="@+id/filterButton"
+        android:layout_width="91dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="9dp"
+        android:backgroundTint="#007BFF"
+        android:text="Filter"
+        app:layout_constraintBottom_toTopOf="@+id/resutlList"
+        app:layout_constraintEnd_toStartOf="@+id/goButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkInDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

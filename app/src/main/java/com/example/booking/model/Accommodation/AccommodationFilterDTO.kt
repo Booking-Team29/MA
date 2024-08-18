@@ -2,13 +2,11 @@ package com.example.booking.model.Accommodation
 
 import android.os.Parcel
 import android.os.Parcelable
-import android.os.Parcelable.Creator
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
-import java.util.ArrayList
 
-class Accommodation(
+class AccommodationFilterDTO (
     @SerializedName("id") @Expose val ID: Long,
     @SerializedName("name") @Expose val Name: String,
     @SerializedName("description") @Expose val Description: String,
@@ -23,7 +21,8 @@ class Accommodation(
     @SerializedName("accommodationStatus") @Expose val accommodationStatus: AccommodationStatus,
     @SerializedName("images") @Expose val Images: ArrayList<String>?,
     @SerializedName("type") @Expose val Type: AccommodationType,
-    @SerializedName("ownerid") @Expose val ownerid: Int
+    @SerializedName("rating") @Expose val Rating: Double,
+    @SerializedName("ownerid") @Expose val OwnerId: Double
 ) : Serializable, Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
@@ -40,7 +39,8 @@ class Accommodation(
         AccommodationStatus.valueOf(parcel.readString().toString()),
         parcel.createStringArrayList(),
         AccommodationType.valueOf(parcel.readString().toString()),
-        parcel.readInt()
+        parcel.readDouble(),
+        parcel.readDouble()
     ) {
     }
 
@@ -51,25 +51,23 @@ class Accommodation(
         parcel.writeString(Location)
         parcel.writeInt(MinGuests)
         parcel.writeInt(MaxGuests)
+        parcel.writeTypedList(prices)
         parcel.writeString(PricingType)
         parcel.writeInt(DaysForCancellation)
-        parcel.writeStringList(Amenities)
-        parcel.writeStringList(Images)
-        parcel.writeInt(ownerid)
+        parcel.writeDouble(Rating)
     }
 
     override fun describeContents(): Int {
         return 0
     }
 
-    companion object CREATOR : Creator<Accommodation> {
-        override fun createFromParcel(parcel: Parcel): Accommodation {
-            return Accommodation(parcel)
+    companion object CREATOR : Parcelable.Creator<AccommodationFilterDTO> {
+        override fun createFromParcel(parcel: Parcel): AccommodationFilterDTO {
+            return AccommodationFilterDTO(parcel)
         }
 
-        override fun newArray(size: Int): Array<Accommodation?> {
+        override fun newArray(size: Int): Array<AccommodationFilterDTO?> {
             return arrayOfNulls(size)
         }
     }
-
 }

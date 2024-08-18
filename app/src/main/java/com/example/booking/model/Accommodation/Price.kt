@@ -11,16 +11,33 @@ class Price (
     @SerializedName("id") @Expose val ID: Long,
     @SerializedName("type") @Expose val Type: String,
     @SerializedName("amount") @Expose val Amount: Double,
-    @SerializedName("start") @Expose val Start: LocalDate,
-    @SerializedName("end") @Expose val End: LocalDate,
+    @SerializedName("start") @Expose val Start: String,
+    @SerializedName("end") @Expose val End: String,
 ) : Serializable, Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
         parcel.readString().toString(),
         parcel.readDouble(),
-        TODO("Start"),
-        TODO("End")
+        parcel.readString().toString(),
+        parcel.readString().toString()
     ) {
+    }
+    fun getStartDate(): LocalDate? {
+        try {
+            LocalDate.parse(Start)
+        } catch (e: Exception) {
+            return null
+        }
+        return null
+    }
+
+    fun getEndDate(): LocalDate? {
+        try {
+            LocalDate.parse(End)
+        } catch (e: Exception) {
+            return null
+        }
+        return null
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
