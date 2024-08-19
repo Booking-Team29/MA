@@ -3,6 +3,7 @@ package com.example.booking.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import kotlin.collections.ArrayList
 import android.widget.ListView
 import android.widget.Toast
 import com.example.booking.adapter.AccommodationSearchResultAdapter
@@ -62,7 +63,7 @@ class MainSearch : AppCompatActivity(), SearchFilterFragment.OnFilterAppliedList
                 if (response.isSuccessful) {
                     val users = response.body() ?: emptyList()
                     items = users
-                    adapter.updateItems(users)
+                    adapter.updateItems(items)
                 } else {
                     Toast.makeText(this@MainSearch, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
                 }

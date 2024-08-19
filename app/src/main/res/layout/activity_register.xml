@@ -205,14 +205,14 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/descriptionAccText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:text="Already have an account ?" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/reviewUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"

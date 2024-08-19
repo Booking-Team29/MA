@@ -9,15 +9,15 @@ import java.time.LocalDate
 
 class AccommodationFreeSlot (
     @SerializedName("id") @Expose val ID: Long,
-    @SerializedName("startDate") @Expose val startDate: LocalDate,
-    @SerializedName("endDate") @Expose val endDate: LocalDate,
+    @SerializedName("startDate") @Expose val startDate: String,
+    @SerializedName("endDate") @Expose val endDate: String,
     @SerializedName("accommodationId") @Expose val accommodationId: Long,
     @SerializedName("available") @Expose val available: Boolean,
 ): Serializable, Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
-        LocalDate.parse(parcel.readString()),
-        LocalDate.parse(parcel.readString()),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
         parcel.readLong(),
         parcel.readByte() != 0.toByte()
     ) {

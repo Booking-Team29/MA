@@ -32,7 +32,7 @@ class AccommodationSearchResultAdapter(private val context: Context, private var
         val view: View = convertView ?: LayoutInflater.from(context).inflate(R.layout.fragment_search_result, parent, false)
         val titleTextView: TextView = view.findViewById(R.id.nameText)
         val ratingTextView: TextView = view.findViewById(R.id.ratingText)
-        val placeTextView: TextView = view.findViewById(R.id.placeText)
+        val placeTextView: TextView = view.findViewById(R.id.placeAccText)
         val descriptionTextView: TextView = view.findViewById(R.id.descriptionText)
         val imageImageView: ImageView = view.findViewById(R.id.imageView)
         val priceText: TextView = view.findViewById(R.id.priceText)

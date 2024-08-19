@@ -10,7 +10,7 @@ import java.time.LocalDate
 class ReviewDTO (
     @SerializedName("reviewId") @Expose val reviewID: Long,
     @SerializedName("reviewerEmail") @Expose val reviewerEmail: String,
-    @SerializedName("reviewDate") @Expose val reviewDate: LocalDate,
+    @SerializedName("reviewDate") @Expose val reviewDate: String,
     @SerializedName("description") @Expose val description: String,
     @SerializedName("rating") @Expose val rating: Double,
     @SerializedName("approved") @Expose val approved: Boolean,
@@ -21,7 +21,7 @@ class ReviewDTO (
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
         parcel.readString() ?: "",
-        LocalDate.parse(parcel.readString()),
+        parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readDouble(),
         parcel.readByte() != 0.toByte(),

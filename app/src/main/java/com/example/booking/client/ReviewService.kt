@@ -13,12 +13,12 @@ interface ReviewService {
         "User-Agent: Mobile-Android",
         "Content-Type: application/json",
     )
-    @GET("rating/{id}")
+    @GET("review/rating/{id}")
     fun getAccommodationRating(
         @Path("id") id: String,
     ) : Call<RatingDTO>
 
-    @GET("accommodation/{id}")
+    @GET("review/accommodation/{id}")
     fun getAccommodationReview(
         @Path("id") id: String,
     ) : Call<List<ReviewDTO>>

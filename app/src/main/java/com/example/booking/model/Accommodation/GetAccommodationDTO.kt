@@ -22,7 +22,6 @@ class GetAccommodationDTO (
     @SerializedName("accommodationStatus") @Expose val accommodationStatus: AccommodationStatus,
     @SerializedName("images") @Expose val Images: ArrayList<String>?,
     @SerializedName("type") @Expose val Type: AccommodationType,
-    @SerializedName("ownerid") @Expose val ownerid: Int,
     @SerializedName("confirmationMethod") @Expose val confirmationMethod: ConfirmationMethod,
     @SerializedName("slots") @Expose val slots: List<AccommodationFreeSlot>,
 
@@ -42,7 +41,6 @@ class GetAccommodationDTO (
         AccommodationStatus.valueOf(parcel.readString().toString()),
         parcel.createStringArrayList(),
         AccommodationType.valueOf(parcel.readString().toString()),
-        parcel.readInt(),
         ConfirmationMethod.valueOf(parcel.readString().toString()),
         parcel.createTypedArrayList(AccommodationFreeSlot)?.toList() ?: emptyList()
     ) {
@@ -58,7 +56,6 @@ class GetAccommodationDTO (
         parcel.writeTypedList(prices)
         parcel.writeString(PricingType)
         parcel.writeInt(DaysForCancellation)
-        parcel.writeInt(ownerid)
         parcel.writeTypedList(slots)
     }
 
