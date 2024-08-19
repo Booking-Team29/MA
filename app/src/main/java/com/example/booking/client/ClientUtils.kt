@@ -13,6 +13,7 @@ object ClientUtils {
     const val API_URL: String = "http://192.168.1.105:8080/api/v1/"
     var jwt: String = ""
     var role: String = ""
+    var userEmail: String = ""
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(API_URL)
         .addConverterFactory(GsonConverterFactory.create())
@@ -21,6 +22,7 @@ object ClientUtils {
     val accommodationService: AccommodationService = retrofit.create(AccommodationService::class.java)
     val reviewService: ReviewService = retrofit.create(ReviewService::class.java)
     val userService: UserService = retrofit.create(UserService::class.java)
+    val reservationService: ReservationService = retrofit.create(ReservationService::class.java)
 
     private fun createHttpClient(): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
@@ -39,12 +41,14 @@ object ClientUtils {
     fun setToken(jwt: String) {
         this.jwt = jwt
         this.role = JWT.decode(jwt).getClaim("role").asString()
+        this.userEmail = JWT.decode(jwt).getClaim("sub").asString()
         System.out.println("Role: " + this.role)
     }
 
     fun logOut() {
         this.jwt = ""
         this.role = ""
+        this.userEmail = ""
     }
 }
 

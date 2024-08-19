@@ -73,7 +73,7 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/bookButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
@@ -141,12 +141,12 @@
             android:inputType="textMultiLine"
             android:textColor="#2094FF"
             android:textColorHint="#2094FF"
-            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintEnd_toStartOf="@+id/submitReviewButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionAccText" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/submitReviewButton"
             android:layout_width="85dp"
             android:layout_height="42dp"
             android:layout_marginStart="5dp"
@@ -191,7 +191,7 @@
             app:layout_constraintBottom_toTopOf="@+id/descriptionAccText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/bookButton" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reviewList"

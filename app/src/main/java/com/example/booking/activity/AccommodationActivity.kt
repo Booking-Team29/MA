@@ -4,11 +4,13 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.booking.R
@@ -35,6 +37,10 @@ class AccommodationActivity : AppCompatActivity() {
         binding = ActivityAccommodationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (ClientUtils.role != "GUEST") {
+            binding.bookButton.visibility = View.INVISIBLE
+        }
+
         adapter = AccommodationReviewAdapter(this, emptyList())
         binding.reviewList.layoutManager = LinearLayoutManager(this)
         binding.reviewList.adapter = adapter
@@ -44,6 +50,14 @@ class AccommodationActivity : AppCompatActivity() {
         getAccommodation()
         getRating()
         getReviews()
+
+        binding.bookButton.setOnClickListener {
+            if (accommodation != null) {
+                val intent = Intent(this@AccommodationActivity, MakeReservationActivity::class.java)
+                intent.putExtra("ACCOMMODATION_ID", accommodation!!.ID)
+                ContextCompat.startActivity(this@AccommodationActivity, intent, null)
+            }
+        }
     }
 
     private fun getAccommodation() {
