@@ -19,15 +19,17 @@
 
     <EditText
         android:id="@+id/placeInput"
-        android:layout_width="209dp"
+        android:layout_width="200dp"
         android:layout_height="55dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="42dp"
         android:ems="10"
         android:hint="Place"
         android:inputType="text"
         android:textColorHint="#007BFF"
         android:tooltipText="Hello"
+        app:layout_constraintEnd_toStartOf="@+id/numberOfPeopleInput"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerFragment" />
 
@@ -35,16 +37,13 @@
         android:id="@+id/numberOfPeopleInput"
         android:layout_width="129dp"
         android:layout_height="55dp"
-        android:layout_marginStart="25dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="People"
         android:inputType="number"
         android:textColorHint="#007BFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.583"
-        app:layout_constraintStart_toEndOf="@+id/placeInput"
         app:layout_constraintTop_toBottomOf="@+id/headerFragment" />
 
     <Button
@@ -76,29 +75,30 @@
 
     <EditText
         android:id="@+id/checkInDate"
-        android:layout_width="160dp"
+        android:layout_width="150dp"
         android:layout_height="47dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="42dp"
+        android:layout_marginEnd="67dp"
         android:ems="10"
         android:hint="Check In Date"
         android:inputType="date"
+        android:textColorHint="#007BFF"
         app:layout_constraintEnd_toStartOf="@+id/checkOutDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/placeInput" />
 
     <EditText
         android:id="@+id/checkOutDate"
-        android:layout_width="162dp"
+        android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Check Out Date"
         android:inputType="date"
+        android:textColorHint="#007BFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/checkInDate"
         app:layout_constraintTop_toBottomOf="@+id/placeInput" />
 
     <Button

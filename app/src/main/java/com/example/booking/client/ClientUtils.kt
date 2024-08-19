@@ -1,6 +1,9 @@
 package com.example.booking.client
 
+import com.auth0.jwt.JWT
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,8 +20,9 @@ object ClientUtils {
         .build()
     val accommodationService: AccommodationService = retrofit.create(AccommodationService::class.java)
     val reviewService: ReviewService = retrofit.create(ReviewService::class.java)
+    val userService: UserService = retrofit.create(UserService::class.java)
 
-    fun createHttpClient(): OkHttpClient {
+    private fun createHttpClient(): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
@@ -27,7 +31,28 @@ object ClientUtils {
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
+            .addInterceptor(AuthInterceptor())
             .addInterceptor(httpLoggingInterceptor)
             .build()
     }
+
+    fun setToken(jwt: String) {
+        this.jwt = jwt
+        this.role = JWT.decode(jwt).getClaim("role").asString()
+        System.out.println("Role: " + this.role)
+    }
+
+    fun logOut() {
+        this.jwt = ""
+        this.role = ""
+    }
+}
+
+class AuthInterceptor() : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val newRequest = chain.request().newBuilder()
+                .addHeader("Authorization", "Bearer ${ClientUtils.jwt}")
+                .build()
+            return chain.proceed(newRequest)
+        }
 }
