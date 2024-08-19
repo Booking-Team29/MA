@@ -9,15 +9,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="239dp">
+        android:layout_height="263dp">
 
         <TextView
             android:id="@+id/descriptionText"
             android:layout_width="205dp"
             android:layout_height="157dp"
-            android:layout_marginStart="43dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="19dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tortor nunc, tincidunt sit amet cursus at, bibendum vel sem. Nullam lectus ipsum, pharetra a aliquam non, finibus vel velit."
             android:textAlignment="center"
             android:textColor="#007BFF"
@@ -39,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="Place 1"
             android:textColor="#007BFF"
             android:textStyle="bold"
@@ -47,16 +49,18 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <TextView
-            android:id="@+id/placeText"
+            android:id="@+id/placeAccText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="48dp"
             android:text="Novi Sad, Serbia"
             android:textColor="#007BFF"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingText" />
 
         <TextView
             android:id="@+id/ratingText"
@@ -64,11 +68,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="11dp"
-            android:layout_marginBottom="10dp"
             android:text="9.4/10"
             android:textColor="#007BFF"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/placeText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
@@ -85,5 +87,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+
+        <TextView
+            android:id="@+id/priceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="Price per night:"
+            android:textColor="#007BFF"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/placeAccText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -1,58 +1,107 @@
 package com.example.booking.activity
 
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.BaseAdapter
-import android.widget.Button
+import android.util.Log
+import kotlin.collections.ArrayList
 import android.widget.ListView
-import androidx.core.content.ContextCompat.startActivity
-import com.example.booking.R
+import android.widget.Toast
+import com.example.booking.adapter.AccommodationSearchResultAdapter
+import com.example.booking.client.ClientUtils
 import com.example.booking.databinding.ActivityMainSearchBinding
-import com.example.booking.model.SearchResult
+import com.example.booking.fragment.SearchFilterFragment
+import com.example.booking.model.Accommodation.AccommodationFilterDTO
+import com.example.booking.model.Accommodation.AccommodationType
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.time.LocalDate
 
-class MainSearch : AppCompatActivity() {
+class MainSearch : AppCompatActivity(), SearchFilterFragment.OnFilterAppliedListener {
     private lateinit var listView: ListView
-    private lateinit var adapter: ArrayAdapter<SearchResult>
+    private lateinit var adapter: AccommodationSearchResultAdapter
     private lateinit var binding: ActivityMainSearchBinding
+    private var items: List<AccommodationFilterDTO> = emptyList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainSearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.resutlList.adapter = MyAdapter(this)
+
+        listView = binding.resutlList
+        adapter = AccommodationSearchResultAdapter(this, emptyList())
+
+        binding.goButton.setOnClickListener { fetchItems() }
+        binding.filterButton.setOnClickListener {
+            val dialog = SearchFilterFragment()
+            dialog.setOnFilterAppliedListener(this)
+            dialog.show(supportFragmentManager, "FilterDialogFragment")
+        }
+        listView.adapter = adapter
     }
 
-    private class MyAdapter(context: Context): BaseAdapter() {
-        private val ctx: Context
-        init {
-            ctx = context
-        }
-        override fun getCount(): Int {
-            return 5
-        }
+    private fun fetchItems() {
+        if (binding.placeInput.text.toString().isEmpty()) return
+        var location = binding.placeInput.text.toString()
 
-        override fun getItem(position: Int): Any {
-            return "test"
-        }
+        if (binding.numberOfPeopleInput.text.toString().isEmpty()) return
+        var numberOfPeople: Int = binding.numberOfPeopleInput.text.toString().toIntOrNull() ?: return
+        var checkInDate: LocalDate
+        var checkOutDate: LocalDate
+        try{
+            if (binding.checkInDate.text.toString().isEmpty()) return
+            checkInDate = LocalDate.parse(binding.checkInDate.text.toString()) ?: return
 
-        override fun getItemId(position: Int): Long {
-            return position.toLong()
+            if (binding.checkOutDate.text.toString().isEmpty()) return
+            checkOutDate = LocalDate.parse(binding.checkOutDate.text.toString()) ?: return
+        } catch (e: Exception) {
+            return
         }
-
-        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-            val layoutInflater = LayoutInflater.from(ctx)
-            val rowMain = layoutInflater.inflate(R.layout.fragment_search_result, parent, false)
-            val button: Button = rowMain.findViewById(R.id.showButton)
-            button.setOnClickListener {
-                var intent = Intent(ctx, AccommodationActivity::class.java)
-                startActivity(ctx, intent, null)
+        val call =  ClientUtils.accommodationService.searchAcommodations(location, numberOfPeople, checkInDate, checkOutDate)
+        call.enqueue(object : Callback<List<AccommodationFilterDTO>> {
+            override fun onResponse(call: Call<List<AccommodationFilterDTO>>, response: Response<List<AccommodationFilterDTO>>) {
+                if (response.isSuccessful) {
+                    val users = response.body() ?: emptyList()
+                    items = users
+                    adapter.updateItems(items)
+                } else {
+                    Toast.makeText(this@MainSearch, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
+                }
             }
-            return rowMain
+
+            override fun onFailure(call: Call<List<AccommodationFilterDTO>>, t: Throwable) {
+                System.out.println(t)
+                Toast.makeText(this@MainSearch, "Failed to fetch items", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    override fun onFilterApplied(
+        hotel: Boolean,
+        apartement: Boolean,
+        studio: Boolean,
+
+        wifi: Boolean,
+        parking: Boolean,
+        balcony: Boolean,
+
+        priceFrom: Double?,
+        priceTo: Double?
+    ) {
+        var filteredItems = ArrayList<AccommodationFilterDTO>()
+        for (item in items) {
+            if (item.prices.isEmpty()) continue
+            val price = item.prices[0]
+            if (priceFrom != null && priceTo != null && (price.Amount < priceFrom || price.Amount > priceTo)) continue
+
+            if (wifi && item.Amenities?.contains("Wi-Fi") == false) continue
+            if (parking && item.Amenities?.contains("Parking") == false ) continue
+            if (balcony && item.Amenities?.contains("Balcony") == false) continue
+
+            if (hotel && item.Type.compareTo(AccommodationType.HOTEL) == 0) filteredItems.add(item)
+            else if (apartement && item.Type.compareTo(AccommodationType.APARTMENT) == 0) filteredItems.add(item)
+            else if (studio && item.Type.compareTo(AccommodationType.STUDIO) == 0) filteredItems.add(item)
         }
+        adapter.updateItems(filteredItems)
     }
 }
