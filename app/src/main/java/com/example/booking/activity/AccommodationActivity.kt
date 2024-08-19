@@ -35,6 +35,10 @@ class AccommodationActivity : AppCompatActivity() {
         binding = ActivityAccommodationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (ClientUtils.role != "ROLE") {
+            binding.bookButton.visibility = View.INVISIBLE
+        }
+
         adapter = AccommodationReviewAdapter(this, emptyList())
         binding.reviewList.layoutManager = LinearLayoutManager(this)
         binding.reviewList.adapter = adapter
