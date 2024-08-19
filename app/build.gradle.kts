@@ -58,6 +58,7 @@ dependencies {
     implementation("com.auth0.android:jwtdecode:2.0.2")
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
     implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
+    implementation ("com.auth0:java-jwt:4.2.1")
 
     implementation ("com.github.bumptech.glide:glide:4.12.0")
 
