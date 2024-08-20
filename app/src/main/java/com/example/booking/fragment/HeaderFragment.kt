@@ -14,11 +14,8 @@ import androidx.appcompat.widget.Toolbar
 import com.example.booking.R
 import com.example.booking.activity.AccountManagementActivity
 import com.example.booking.activity.GuestReservationActivity
-import com.example.booking.activity.LoginActivity
-import com.example.booking.activity.MainActivity
 import com.example.booking.activity.MainSearch
 import com.example.booking.activity.OwnerReservationActivity
-import com.example.booking.activity.RegisterActivity
 import com.example.booking.client.ClientUtils
 
 // TODO: Rename parameter arguments, choose names that match
@@ -71,7 +68,7 @@ class HeaderFragment : Fragment() {
                 startActivity(intent)
                 true
             }
-            R.id.nav_search -> {
+            R.id.nav_home -> {
                 val intent = Intent(context, MainSearch::class.java)
                 startActivity(intent)
                 true
@@ -84,6 +81,12 @@ class HeaderFragment : Fragment() {
                     val intent = Intent(context, OwnerReservationActivity::class.java)
                     startActivity(intent)
                 }
+                true
+            }
+            R.id.nav_notification -> {
+                true
+            }
+            R.id.nav_accommodation -> {
                 true
             }
             else -> super.onOptionsItemSelected(item)
