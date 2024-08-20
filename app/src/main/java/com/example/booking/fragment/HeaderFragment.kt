@@ -17,6 +17,7 @@ import com.example.booking.activity.GuestReservationActivity
 import com.example.booking.activity.LoginActivity
 import com.example.booking.activity.MainActivity
 import com.example.booking.activity.MainSearch
+import com.example.booking.activity.OwnerReservationActivity
 import com.example.booking.activity.RegisterActivity
 import com.example.booking.client.ClientUtils
 
@@ -76,10 +77,13 @@ class HeaderFragment : Fragment() {
                 true
             }
             R.id.nav_reservation -> {
-                if (ClientUtils.role == "GUEST" || true) {
+                if (ClientUtils.role == "GUEST") {
                     val intent = Intent(context, GuestReservationActivity::class.java)
                     startActivity(intent)
-                } else if (ClientUtils.role == "OWNER") {}
+                } else if (ClientUtils.role == "OWNER") {
+                    val intent = Intent(context, OwnerReservationActivity::class.java)
+                    startActivity(intent)
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)
