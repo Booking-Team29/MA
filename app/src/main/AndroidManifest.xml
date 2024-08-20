@@ -45,6 +45,9 @@
             android:name=".activity.MakeReservationActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.GuestReservationActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name"

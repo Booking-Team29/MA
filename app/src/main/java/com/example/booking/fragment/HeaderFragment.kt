@@ -13,10 +13,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.booking.R
 import com.example.booking.activity.AccountManagementActivity
+import com.example.booking.activity.GuestReservationActivity
 import com.example.booking.activity.LoginActivity
 import com.example.booking.activity.MainActivity
 import com.example.booking.activity.MainSearch
 import com.example.booking.activity.RegisterActivity
+import com.example.booking.client.ClientUtils
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,19 +75,11 @@ class HeaderFragment : Fragment() {
                 startActivity(intent)
                 true
             }
-            R.id.nav_register -> {
-                val intent = Intent(context, RegisterActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            R.id.nav_login -> {
-                val intent = Intent(context, LoginActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            R.id.nav_home -> {
-                val intent = Intent(context, MainActivity::class.java)
-                startActivity(intent)
+            R.id.nav_reservation -> {
+                if (ClientUtils.role == "GUEST") {
+                    val intent = Intent(context, GuestReservationActivity::class.java)
+                    startActivity(intent)
+                } else if (ClientUtils.role == "OWNER") {}
                 true
             }
             else -> super.onOptionsItemSelected(item)
