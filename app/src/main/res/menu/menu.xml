@@ -5,19 +5,19 @@
         android:title="Profile" />
 
     <item
-        android:id="@+id/nav_search"
-        android:title="Search" />
-
-    <item
-        android:id="@+id/nav_login"
-        android:title="Login" />
-
-    <item
-        android:id="@+id/nav_register"
-        android:title="Register" />
-    <item
         android:id="@+id/nav_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/nav_reservation"
+        android:title="Reservation" />
+
+    <item
+        android:id="@+id/nav_accommodation"
+        android:title="Accommodation" />
+    <item
+        android:id="@+id/nav_notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Home" />
+        android:title="Notification" />
 </menu>
