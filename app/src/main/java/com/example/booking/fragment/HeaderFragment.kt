@@ -76,7 +76,7 @@ class HeaderFragment : Fragment() {
                 true
             }
             R.id.nav_reservation -> {
-                if (ClientUtils.role == "GUEST") {
+                if (ClientUtils.role == "GUEST" || true) {
                     val intent = Intent(context, GuestReservationActivity::class.java)
                     startActivity(intent)
                 } else if (ClientUtils.role == "OWNER") {}
