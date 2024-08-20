@@ -47,6 +47,7 @@ class ReservationAdapater(
         val item = items[position]
 
         deleteButton.text = "CANCEL"
+        deleteButton.visibility = View.VISIBLE
         if (item.reservationStatus.toString() != "APPROVED") deleteButton.visibility = View.INVISIBLE
 
         checkIn.text = "Check in: " + item.startDate

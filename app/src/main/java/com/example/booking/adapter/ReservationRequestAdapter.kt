@@ -46,6 +46,7 @@ class ReservationRequestAdapter(
         val accName: TextView = view.findViewById(R.id.resViewAcc)
         val status: TextView = view.findViewById(R.id.resViewStatus)
 
+        deleteButton.visibility = View.VISIBLE
         val item = items[position]
         if (item.reservationStatus.toString() != "REQUESTED") deleteButton.visibility = View.INVISIBLE
         else deleteButton.setOnClickListener{ deleteReservation(item.id, deleteButton, status) }
@@ -90,8 +91,8 @@ class ReservationRequestAdapter(
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    button.visibility = View.INVISIBLE
-                    status.text = "DELETED"
+                    for (req in items) if (req.id == reservationId) req.reservationStatus = ReservationStatus.DELETED
+                    updateItems(items)
                     Toast.makeText(context, "Reservation request has been deleted", Toast.LENGTH_SHORT).show()
                 }
                 else Toast.makeText(context, "Error deleting reservation", Toast.LENGTH_SHORT).show()
