@@ -23,6 +23,7 @@ object ClientUtils {
     val reviewService: ReviewService = retrofit.create(ReviewService::class.java)
     val userService: UserService = retrofit.create(UserService::class.java)
     val reservationService: ReservationService = retrofit.create(ReservationService::class.java)
+    val notificationService: NotificationService = retrofit.create(NotificationService::class.java)
 
     private fun createHttpClient(): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor().apply {

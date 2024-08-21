@@ -15,6 +15,7 @@ import com.example.booking.R
 import com.example.booking.activity.AccountManagementActivity
 import com.example.booking.activity.GuestReservationActivity
 import com.example.booking.activity.MainSearch
+import com.example.booking.activity.NotificationActivity
 import com.example.booking.activity.OwnerReservationActivity
 import com.example.booking.client.ClientUtils
 
@@ -64,8 +65,10 @@ class HeaderFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.nav_profile -> {
-                val intent = Intent(context, AccountManagementActivity::class.java)
-                startActivity(intent)
+                if (ClientUtils.role.isNotEmpty()){
+                    val intent = Intent(context, AccountManagementActivity::class.java)
+                    startActivity(intent)
+                }
                 true
             }
             R.id.nav_home -> {
@@ -84,6 +87,10 @@ class HeaderFragment : Fragment() {
                 true
             }
             R.id.nav_notification -> {
+                if (ClientUtils.role.isNotEmpty()){
+                    val intent = Intent(context, NotificationActivity::class.java)
+                    startActivity(intent)
+                }
                 true
             }
             R.id.nav_accommodation -> {
