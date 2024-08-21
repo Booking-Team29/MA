@@ -20,6 +20,7 @@ import com.example.booking.client.ClientUtils
 import com.example.booking.databinding.ActivityAccommodationBinding
 import com.example.booking.model.Accommodation.AccommodationFilterDTO
 import com.example.booking.model.Accommodation.GetAccommodationDTO
+import com.example.booking.model.Accommodation.IsAccommodaitonFavoriteDTO
 import com.example.booking.model.Review.RatingDTO
 import com.example.booking.model.Review.ReviewDTO
 import retrofit2.Call
@@ -37,6 +38,7 @@ class AccommodationActivity : AppCompatActivity() {
         binding = ActivityAccommodationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.favoriteButton.visibility = View.INVISIBLE
         if (ClientUtils.role != "GUEST") {
             binding.bookButton.visibility = View.INVISIBLE
         }
@@ -46,7 +48,7 @@ class AccommodationActivity : AppCompatActivity() {
         binding.reviewList.adapter = adapter
 
         accommodationId = intent.getLongExtra("ACCOMMODATION_ID", 0)
-        System.out.println("Accommodation id: " + accommodationId)
+        checkIfUserFavorite()
         getAccommodation()
         getRating()
         getReviews()
@@ -58,6 +60,64 @@ class AccommodationActivity : AppCompatActivity() {
                 ContextCompat.startActivity(this@AccommodationActivity, intent, null)
             }
         }
+        binding.favoriteButton.setOnClickListener { favoriteHandler() }
+    }
+
+    private fun favoriteHandler() {
+        if (binding.favoriteButton.text == "Favorite") favoriteAccommodation()
+        else unfavoriteAccommodation()
+    }
+
+    private fun favoriteAccommodation() {
+        val call =  ClientUtils.accommodationService.putAccommodationInFavorites(accommodationId)
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    binding.favoriteButton.text = "Unfavorite"
+                    Toast.makeText(this@AccommodationActivity, "Accommodation marked as favorite", Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                System.out.println("Error marking accommodation as favorite: " + t)
+                Toast.makeText(this@AccommodationActivity, "Failed to mark accommodation as favorite", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun unfavoriteAccommodation() {
+        val call =  ClientUtils.accommodationService.deleteAccommodationFavorite(accommodationId)
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    binding.favoriteButton.text = "Favorite"
+                    Toast.makeText(this@AccommodationActivity, "Accommodation removed from favorites", Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                System.out.println("Error removing accommodation from favorites: " + t)
+                Toast.makeText(this@AccommodationActivity, "Failed to remove accommodation from favorites", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun checkIfUserFavorite() {
+        val call =  ClientUtils.accommodationService.isFavoriteAccommodation(accommodationId)
+        call.enqueue(object : Callback<IsAccommodaitonFavoriteDTO> {
+            override fun onResponse(call: Call<IsAccommodaitonFavoriteDTO>, response: Response<IsAccommodaitonFavoriteDTO>) {
+                if (response.isSuccessful) {
+                    val favoriteDTO = response.body()
+                    if (favoriteDTO != null ) {
+                        binding.favoriteButton.visibility = View.VISIBLE
+                        if (favoriteDTO.isFavorite) binding.favoriteButton.text = "Unfavorite"
+                        else binding.favoriteButton.text = "Favorite"
+                    }
+                }
+            }
+            override fun onFailure(call: Call<IsAccommodaitonFavoriteDTO>, t: Throwable) {
+                System.out.println("Error checking if accommodation is favorite: " + t)
+                Toast.makeText(this@AccommodationActivity, "Failed to check if accommodation is favorite", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun getAccommodation() {
