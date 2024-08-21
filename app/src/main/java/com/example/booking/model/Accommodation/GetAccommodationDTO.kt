@@ -22,10 +22,10 @@ class GetAccommodationDTO (
     @SerializedName("accommodationStatus") @Expose val accommodationStatus: AccommodationStatus,
     @SerializedName("images") @Expose val Images: ArrayList<String>?,
     @SerializedName("type") @Expose val Type: AccommodationType,
-    @SerializedName("confirmationMethod") @Expose val confirmationMethod: ConfirmationMethod,
+    @SerializedName("confirmationMethod") @Expose var confirmationMethod: ConfirmationMethod,
     @SerializedName("slots") @Expose val slots: List<AccommodationFreeSlot>,
 
-): Serializable, Parcelable{
+    ): Serializable, Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
         parcel.readString() ?: "",
