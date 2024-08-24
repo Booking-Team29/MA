@@ -1,8 +1,11 @@
 package com.example.booking.activity
 
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import kotlin.collections.ArrayList
 import android.widget.ListView
 import android.widget.Toast
@@ -16,12 +19,20 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.time.LocalDate
+import kotlin.math.sqrt
 
-class MainSearch : AppCompatActivity(), SearchFilterFragment.OnFilterAppliedListener {
+class MainSearch : AppCompatActivity(), SearchFilterFragment.OnFilterAppliedListener, SensorEventListener {
     private lateinit var listView: ListView
     private lateinit var adapter: AccommodationSearchResultAdapter
     private lateinit var binding: ActivityMainSearchBinding
     private var items: List<AccommodationFilterDTO> = emptyList()
+    private var filteredItems: List<AccommodationFilterDTO> = emptyList()
+    private var isSorted: Boolean = false
+
+    private lateinit var sensorManager: SensorManager
+    private var accelerometer: Sensor? = null
+    private var lastShakeTime: Long = 0
+    private val SHAKE_THRESHOLD = 20
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +49,66 @@ class MainSearch : AppCompatActivity(), SearchFilterFragment.OnFilterAppliedList
             dialog.show(supportFragmentManager, "FilterDialogFragment")
         }
         listView.adapter = adapter
+
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        accelerometer?.also { sensor ->
+            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        accelerometer?.also { sensor ->
+            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager.unregisterListener(this)
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        event?.let {
+            val x = it.values[0]
+            val y = it.values[1]
+            val z = it.values[2]
+
+            val acceleration = sqrt((x * x + y * y + z * z).toDouble())
+            val currentTime = System.currentTimeMillis()
+
+            if (currentTime - lastShakeTime > 1000) {
+                if (acceleration > SHAKE_THRESHOLD) {
+                    lastShakeTime = currentTime
+                    onShakeDetected()
+                }
+            }
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) { }
+
+    private fun onShakeDetected() {
+        if (isSorted) {
+            if (filteredItems.size > 0) {
+                filteredItems = filteredItems.reversed()
+                adapter.updateItems(filteredItems)
+            } else {
+                items = items.reversed()
+                adapter.updateItems(items)
+            }
+        } else {
+            if (filteredItems.size > 0) {
+                filteredItems = filteredItems.sortedBy { it.Name }
+                adapter.updateItems(filteredItems)
+                isSorted = true
+            } else {
+                items = items.sortedBy { it.Name }
+                adapter.updateItems(items)
+                isSorted = true
+            }
+        }
     }
 
     private fun fetchItems() {
@@ -62,8 +133,10 @@ class MainSearch : AppCompatActivity(), SearchFilterFragment.OnFilterAppliedList
             override fun onResponse(call: Call<List<AccommodationFilterDTO>>, response: Response<List<AccommodationFilterDTO>>) {
                 if (response.isSuccessful) {
                     val users = response.body() ?: emptyList()
-                    items = users
+                    items = ArrayList(users)
                     adapter.updateItems(items)
+                    filteredItems = ArrayList()
+                    isSorted = false
                 } else {
                     Toast.makeText(this@MainSearch, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
                 }
@@ -88,7 +161,7 @@ class MainSearch : AppCompatActivity(), SearchFilterFragment.OnFilterAppliedList
         priceFrom: Double?,
         priceTo: Double?
     ) {
-        var filteredItems = ArrayList<AccommodationFilterDTO>()
+        filteredItems = ArrayList<AccommodationFilterDTO>()
         for (item in items) {
             if (item.prices.isEmpty()) continue
             val price = item.prices[0]
@@ -98,10 +171,11 @@ class MainSearch : AppCompatActivity(), SearchFilterFragment.OnFilterAppliedList
             if (parking && item.Amenities?.contains("Parking") == false ) continue
             if (balcony && item.Amenities?.contains("Balcony") == false) continue
 
-            if (hotel && item.Type.compareTo(AccommodationType.HOTEL) == 0) filteredItems.add(item)
-            else if (apartement && item.Type.compareTo(AccommodationType.APARTMENT) == 0) filteredItems.add(item)
-            else if (studio && item.Type.compareTo(AccommodationType.STUDIO) == 0) filteredItems.add(item)
+            if (hotel && item.Type.compareTo(AccommodationType.HOTEL) == 0) (filteredItems as ArrayList<AccommodationFilterDTO>).add(item)
+            else if (apartement && item.Type.compareTo(AccommodationType.APARTMENT) == 0) (filteredItems as ArrayList<AccommodationFilterDTO>).add(item)
+            else if (studio && item.Type.compareTo(AccommodationType.STUDIO) == 0) (filteredItems as ArrayList<AccommodationFilterDTO>).add(item)
         }
         adapter.updateItems(filteredItems)
+        isSorted = false
     }
 }
