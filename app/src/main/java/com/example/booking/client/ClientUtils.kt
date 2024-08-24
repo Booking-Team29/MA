@@ -8,9 +8,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import com.example.booking.BuildConfig
 
 object ClientUtils {
-    const val API_URL: String = "http://192.168.1.105:8080/api/v1/"
+    const val API_URL: String = BuildConfig.SERVER_URL + "/api/v1/"
     var jwt: String = ""
     var role: String = ""
     var userEmail: String = ""
