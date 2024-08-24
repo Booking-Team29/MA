@@ -22,6 +22,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "SERVER_URL", "\"http://192.168.1.105:8080\"")
+        }
+
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -40,6 +44,7 @@ android {
     buildFeatures {
         compose = true
         viewBinding = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
