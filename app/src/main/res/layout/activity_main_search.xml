@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainSearch">
+
+    <fragment
+        android:id="@+id/headerFragment"
+        android:name="com.example.booking.fragment.HeaderFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="159dp"
+        app:layout_constraintBottom_toTopOf="@+id/placeInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.005" />
+
+    <EditText
+        android:id="@+id/placeInput"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="42dp"
+        android:ems="10"
+        android:hint="Place"
+        android:inputType="text"
+        android:textColorHint="#007BFF"
+        android:tooltipText="Hello"
+        app:layout_constraintEnd_toStartOf="@+id/numberOfPeopleInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerFragment" />
+
+    <EditText
+        android:id="@+id/numberOfPeopleInput"
+        android:layout_width="129dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="People"
+        android:inputType="number"
+        android:textColorHint="#007BFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerFragment" />
+
+    <Button
+        android:id="@+id/goButton"
+        android:layout_width="92dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#007BFF"
+        android:text="Search"
+        app:layout_constraintBottom_toTopOf="@+id/resutlList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/filterButton"
+        app:layout_constraintTop_toBottomOf="@+id/checkOutDate" />
+
+    <ListView
+        android:id="@+id/resutlList"
+        android:layout_width="0dp"
+        android:layout_height="502dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goButton"
+        tools:listitem="@layout/fragment_search_result" />
+
+    <EditText
+        android:id="@+id/checkInDate"
+        android:layout_width="150dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="67dp"
+        android:ems="10"
+        android:hint="Check In Date"
+        android:inputType="date"
+        android:textColorHint="#007BFF"
+        app:layout_constraintEnd_toStartOf="@+id/checkOutDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/placeInput" />
+
+    <EditText
+        android:id="@+id/checkOutDate"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Check Out Date"
+        android:inputType="date"
+        android:textColorHint="#007BFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/placeInput" />
+
+    <Button
+        android:id="@+id/filterButton"
+        android:layout_width="91dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="9dp"
+        android:backgroundTint="#007BFF"
+        android:text="Filter"
+        app:layout_constraintBottom_toTopOf="@+id/resutlList"
+        app:layout_constraintEnd_toStartOf="@+id/goButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkInDate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

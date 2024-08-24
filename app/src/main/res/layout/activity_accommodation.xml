@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="410dp"
+    android:layout_height="1070dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.AccommodationActivity">
+
+        <fragment
+            android:id="@+id/headerFragment"
+            android:name="com.example.booking.fragment.HeaderFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/imageCarousel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/imageCarousel"
+            android:layout_width="404dp"
+            android:layout_height="238dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="44dp"
+            app:iss_auto_cycle="true"
+            app:iss_delay="0"
+            app:iss_period="1000"
+            app:layout_constraintBottom_toTopOf="@+id/nameAccText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerFragment" />
+
+        <TextView
+            android:id="@+id/nameAccText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="177dp"
+            android:text="Place 1"
+            android:textColor="#007BFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageCarousel" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="58dp"
+            android:layout_marginEnd="177dp"
+            android:layout_marginBottom="15dp"
+            android:text="Reviews"
+            android:textColor="#007BFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/reviewList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+
+        <Button
+            android:id="@+id/bookButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="82dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#007BFF"
+            android:text="Book now"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameAccText" />
+
+        <TextView
+            android:id="@+id/descriptionAccText"
+            android:layout_width="348dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="32dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porttitor justo ut commodo semper. Aenean nisi nibh, dapibus non mi at, gravida porta ante. Aliquam in purus sit amet urna finibus molestie et eu dolor. Sed fringilla metus a nisl vulputate auctor. Mauris placerat aliquet nulla, ut porta libero eleifend ac"
+            android:textAlignment="center"
+            android:textColor="#007BFF"
+            app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.416"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/amenitiesAccText" />
+
+        <TextView
+            android:id="@+id/placeAccText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="68dp"
+            android:text="Novi Sad, Serbia"
+            android:textColor="#007BFF"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageCarousel" />
+
+        <TextView
+            android:id="@+id/ratingAccText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="40dp"
+            android:text="9.4/10"
+            android:textColor="#007BFF"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageCarousel" />
+
+        <EditText
+            android:id="@+id/editTextTextMultiLine"
+            android:layout_width="263dp"
+            android:layout_height="113dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="15dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Leave a review"
+            android:inputType="textMultiLine"
+            android:textColor="#2094FF"
+            android:textColorHint="#2094FF"
+            app:layout_constraintEnd_toStartOf="@+id/submitReviewButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionAccText" />
+
+        <Button
+            android:id="@+id/submitReviewButton"
+            android:layout_width="85dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="28dp"
+            android:backgroundTint="#2094FF"
+            android:shadowColor="#000000"
+            android:text="Submit"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editTextTextMultiLine"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="59dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="52dp"
+            android:ems="10"
+            android:hint="0/10"
+            android:inputType="number"
+            android:textColor="#2094FF"
+            android:textColorHint="#2094FF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/editTextTextMultiLine"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionAccText" />
+
+        <TextView
+            android:id="@+id/amenitiesAccText"
+            android:layout_width="349dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="29dp"
+            android:layout_marginBottom="16dp"
+            android:text="Amenities"
+            android:textColor="#007BFF"
+            android:textColorLink="#007BFF"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionAccText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bookButton" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reviewList"
+            android:layout_width="379dp"
+            android:layout_height="413dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="30dp"
+            android:scrollbars="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <Button
+            android:id="@+id/favoriteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="87dp"
+            android:backgroundTint="#007BFF"
+            android:text="Favorite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameAccText" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
